@@ -1,5 +1,5 @@
-onst connection = require('../config/connection');
-const users = require("./users.json")
+const connection = require('../config/connection');
+const users = require("./user.json")
 const thoughts = require("./thoughts.json")
 const reactions = require("./reactions.json")
 

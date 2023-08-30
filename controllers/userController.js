@@ -19,8 +19,9 @@ module.exports = {
   async getUser(req, res) {
     try {
       const user = await User
-        .findOne({ _id: req.params.id })
+        .findOne({ _id: req.params.userId })
         .populate('friends')
+        .select("-__v")
 
       if (!user) {
         return res.status(404).json({message: 'No user with that id'})
@@ -48,7 +49,7 @@ module.exports = {
   async updateUser(req, res) {
     try {
       const user = await User.findOneAndUpdate(
-        { _id: req.params.id},
+        { _id: req.params.userId},
         { $set: req.body },
         { new: true }
       )
